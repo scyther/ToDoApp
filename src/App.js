@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import TodoForm from "./components/Todo-form";
+import { Row, Col, Container } from "reactstrap";
+import TodosList from "./components/Todos-list";
+import {Provider} from 'react-redux';
+import store from './store'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App =() => {
+	return (
+		<Provider store={store}>
+		<Container className="themed-container">
+			<Row>
+				<Col md={{ offset: "4", size: "6" }} sm='10'>
+					<h4>To Do App (React and Redux)</h4>
+				</Col>
+			</Row>
+			<Row>
+			<Col md={{ offset: "3", size: "6" }} sm='10'>
+				<TodosList />
+			</Col>
+			</Row>
+			<Row>
+				<Col md={{ offset: "3", size: "6" }} sm='10'>
+					<TodoForm />
+				</Col>
+			</Row>
+		</Container>
+		</Provider>
+	);
 }
 
 export default App;
